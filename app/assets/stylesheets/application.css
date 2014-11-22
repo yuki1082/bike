@@ -1,3 +1,4 @@
+@charset "utf-8";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -11,3 +12,101 @@
  *= require_self
  *= require_tree .
  */
+
+ *{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	border: solid;
+	font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', sans-serif;
+	width: 100%;
+}
+
+.header_wrapper{
+border-bottom: solid 1px #dddddd;
+}
+
+#header	{
+	margin-bottom: 20px;	
+	width: 1024px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.title{
+	float: left;
+	width: auto;
+}
+
+.title h1	{
+	margin: 0;
+	font-size: 30px;
+}
+
+.title img	{
+	border: none;
+	width: 80%;
+}
+
+nav {
+	border: dotted;
+	position: relative;
+	float: right;
+}
+
+.nav_menu_wrapper{
+	width: 100%;
+	border: solid;
+	float: right;
+}
+
+ul.nav_menu{
+	float: right;
+
+	border: solid;
+	border-color: red;
+
+}
+
+.nav_menu li {
+	position: relative;
+	list-style: none;
+	float: left;
+}
+
+.nav_menu li a	{
+	display: block;
+	padding: 15px 20px 10px;
+	color: #000000;
+	font-size: 16px;
+	text-decoration: none;
+}
+
+.nav_menu li a:hover	{
+	background-color: #eeeeee;
+}
+
+ul.signin_form li,ul.signed_in li{
+position: relative;
+top: 100%;
+display: block;
+list-style: none;
+float: left;
+padding: 7px;
+}
+
+/* clear fix **/
+.cf{
+	zoom:1;
+}
+
+.cf:after{
+	content:"";
+	display: table;
+}
+.cf:after{
+	clear:both;
+}
+

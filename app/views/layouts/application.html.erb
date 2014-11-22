@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
   <title>Bike</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -7,8 +7,58 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div class="header_wrapper">
+	<header id="header" class="cf">
+		<div class="title">
+			<h1><a href="#"><%= image_tag "header_logo.png"%></a></h1>
+		</div>
 
-<%= yield %>
+	  <nav class="cf">
+	  	<div class="nav_menu_wrapper cf"> 
+	  		<ul class="nav_menu cf">
+	  			<li><%=link_to "HOME", "#"%></li>
+	  			<li><%=link_to "Bike", "#"%></li>
+	  			<li><%=link_to "Drink", "#"%></li>
+	  			<li><%=link_to "Photo", "#"%></li>			  
+	  		</ul>
+</div> 
 
+
+
+
+		  <% unless signed_in? %>
+		  <ul class="signin_form ">		
+		  	<%= form_for(:session, url: sessions_path) do |f|%>
+		  	<li><span><%= f.label :email %>:</span> 
+		  		<%= f.text_field :email, html:{class: "signin"}, size: 15 %></li>
+		  		<li><span><%= f.label :password %>:</span>
+		  			<%= f.password_field :password, html:{class: "signin"}, size: 15 %></li>
+		  			<li class="submit"><%= f.submit("Submits") %></li>
+		  			<li><%= link_to "Sign Up", new_user_path %></li>
+		  	<% end %>
+		  </ul>
+		  <% else %>	  	
+		  <ul class="signed_in cf">
+		  	<li> Welcom <%= current_user.name %> |
+		  		<%= link_to "sign_out", session_path(current_user), method: :delete, confirm: "sure?" %> </li>	  
+		  		<li>hoge</li>
+		  </ul>
+		  <% end %>
+
+
+	  </nav> <!-- header -->
+	</header> <!-- header -->
+</div>
+
+
+
+<div id="content_wrapper">
+	<div id="content">
+		<% flash.each do |key, value| %>
+		<div class="alert"><%= key %><%= value %> </div>
+		<% end %>	
+		<%= yield %>
+	</div>
+</div>
 </body>
 </html>

@@ -1,7 +1,6 @@
-<h1> TOP page </h1>
-<p>this is initial page<%= @message %><p>
-<h2>Log in </h2>
-<%= form_for(:session, url: sessions_path) do |f| %>
+<div id="login_form">
+	<h2>Log in </h2>
+	<%= form_for(:session, url: sessions_path) do |f| %>
 	<table class="table">
 		<tr>
 			<th><%= f.label :email %></th>
@@ -13,6 +12,7 @@
 		</tr>
 	</table>
 	<%= f.submit %>
-<% end %>
+	<% end %>
 
-<h2><%= link_to "Create new Account", new_user_path %></h2>
+	<p><%= link_to "Create new Account", new_user_path %></h2>
+	</div>
