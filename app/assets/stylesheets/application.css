@@ -13,89 +13,94 @@
  *= require_tree .
  */
 
- *{
+*{
 	margin: 0;
 	padding: 0;
 }
 
 body{
-	border: solid;
 	font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', sans-serif;
 	width: 100%;
 }
 
 .header_wrapper{
+padding-left: 15px;
+padding-right: 15px;
+border: dotted;
 border-bottom: solid 1px #dddddd;
 }
 
-#header	{
+.header	{
 	margin-bottom: 20px;	
-	width: 1024px;
-	margin-right: auto;
-	margin-left: auto;
 }
 
-.title{
+.header h1 {
+	line-height: 1;
+}
+
+
+div.box1{
+	width: auto;
+	float: left;
+}
+
+div.box2{
+	width: auto;
+	float: right;
+	position: relative;
+}
+
+div.box3{
+	float: right;
+	width: 50%;
+}
+
+/** Within box2 **/
+div.box2-1{
+	display: block !important;
+	width: auto;
+}
+
+div.box2-1 ul {
+	float: right;
+	margin: 0;
+	padding:0;
+	list-style: none;
+	width: auto;
+}
+
+div.box2-1 ul li{
 	float: left;
 	width: auto;
 }
 
-.title h1	{
-	margin: 0;
-	font-size: 30px;
-}
-
-.title img	{
-	border: none;
-	width: 80%;
-}
-
-nav {
-	border: dotted;
-	position: relative;
-	float: right;
-}
-
-.nav_menu_wrapper{
-	width: 100%;
-	border: solid;
-	float: right;
-}
-
-ul.nav_menu{
-	float: right;
-
-	border: solid;
-	border-color: red;
-
-}
-
-.nav_menu li {
-	position: relative;
-	list-style: none;
-	float: left;
-}
-
-.nav_menu li a	{
-	display: block;
-	padding: 15px 20px 10px;
+div.box2-1 li a	{display: block;
+	padding: 10px 15px;
 	color: #000000;
-	font-size: 16px;
-	text-decoration: none;
-}
+	font-size: 20px;
+	text-decoration: none}
 
-.nav_menu li a:hover	{
+div.box2-1 ul.nav_menu li a:hover	{
 	background-color: #eeeeee;
 }
 
-ul.signin_form li,ul.signed_in li{
-position: relative;
-top: 100%;
-display: block;
-list-style: none;
-float: left;
-padding: 7px;
+
+/** within box3 **/
+.signin_form, .signed_in {
+	margin-right: 0px;
+	width: auto;
 }
+
+span{
+	padding-right:2px;
+}
+
+input[type="text"], input[type="password"]{
+	width: 25%;
+	margin: 0;
+	padding: 0;
+}
+
 
 /* clear fix **/
 .cf{
@@ -105,8 +110,12 @@ padding: 7px;
 .cf:after{
 	content:"";
 	display: table;
-}
-.cf:after{
 	clear:both;
 }
-
+@media screen and (min-width:1024px){
+	.header{
+		width: 1024px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
