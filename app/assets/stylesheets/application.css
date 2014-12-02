@@ -24,35 +24,48 @@ body{
 }
 
 .header_wrapper{
-padding-left: 15px;
-padding-right: 15px;
+padding: 5px 15px;
 border: dotted;
 border-bottom: solid 1px #dddddd;
+margin-bottom: 15px;
 }
+.boxA	{padding-top: 20px;
+	border: solid;
+	padding-bottom: 10px}
 
 .header	{
 	margin-bottom: 20px;	
 }
 
 .header h1 {
-	line-height: 1;
+	line-height: 0.2;
 }
 
-
-div.box1{
-	width: auto;
+div.box1, div.box2{
 	float: left;
 }
 
 div.box2{
-	width: auto;
 	float: right;
-	position: relative;
 }
 
 div.box3{
 	float: right;
-	width: 50%;
+	width: 45%;
+	border: solid;
+}
+
+div.box4{
+	margin-bottom: 10px;
+}
+
+div.box5{
+
+}
+
+/**Widin box1**/
+div.box1 img{
+	width: 100%;
 }
 
 /** Within box2 **/
@@ -101,7 +114,68 @@ input[type="text"], input[type="password"]{
 	padding: 0;
 }
 
+/** within box4**/
+div.box4 div.top img{
+	width: 100%;
+	max-width: 1024px;
+}
 
+.top	{position: relative}
+
+.catch	{position: absolute;
+	bottom: 7%;
+	left: 3%}
+
+.catch	{margin: 0;
+	padding: 15px;
+	background-color: rgba(255,255,255,0.7);
+	font-size: 28px
+}
+
+
+/** within box5**/
+.box5 div:nth-child(n){
+	position: relative;
+	float: left;
+	width: 32%;
+	height: auto;
+	margin-right: 2%;
+}
+.box5 img{
+	width: 100%;
+	height: auto;
+}
+.box5 div:last-child{
+	margin-right: 0%;
+}
+
+.box5 div.bg{
+	opacity: 0.9;
+	position: absolute;
+	bottom: 0%;
+	background-color: #222222;
+	width: 100%;
+	height: 15%;
+}
+
+.box5 div.bg p{
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+
+}
+
+.box5 p {
+	font-size: 1em;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	color: #ffffff;
+}
+
+.box5 a:hover{
+	opacity: 0.7;
+}
 /* clear fix **/
 .cf{
 	zoom:1;
@@ -112,8 +186,9 @@ input[type="text"], input[type="password"]{
 	display: table;
 	clear:both;
 }
+
 @media screen and (min-width:1024px){
-	.header{
+	.header, #content{
 		width: 1024px;
 		margin-left: auto;
 		margin-right: auto;

@@ -3,10 +3,8 @@
 <head>
   <title>Bike</title>
   <meta name="viewport" content="width=device-width">
-
   <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= stylesheet_link_tag    "normalize", :media => "all" %>
-
+  <%= stylesheet_link_tag    "normalize", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -54,15 +52,37 @@
 	</div> <!-- header -->
 </div> <!-- header_wrapper -->
 
-<p> aaa </p>
 
-<div id="content_wrapper">
-	<div id="content">
+<div id="content">
+	<div class="box4">
+		<div class="top">
+			<%= image_tag "top.png"%>
+			<p class="catch">Takeda Labolatory 13th Members <br> Motor Bicycle Club</p>
+			</div>
+		</div>
+
+
+	<div class="box5 cf">
+		<div class="box5-1">
+			<a href ="#"><%= image_tag"bikea.JPG" %> 
+				<div class="bg"><p>Niigata Touring<p></div>
+			</a>
+		</div>
+		<div class="box5-2">
+			<a href="#"><%= image_tag"bikea.JPG" %> </a>
+			<div class="bg"><p>Toyama Touring </p></div>
+		</div>
+		<div class="box5-3">
+			<a href="#"><%= image_tag"bikea.JPG" %> </a>
+			<div class="bg"><p> Mt.Fuji Touring </p></div>
+		</div>
+	</div>
+
 		<% flash.each do |key, value| %>
 		<div class="alert"><%= key %><%= value %> </div>
 		<% end %>	
 <!--		<%= yield %> -->
-	</div>
+
 </div>
 </body>
 </html>
