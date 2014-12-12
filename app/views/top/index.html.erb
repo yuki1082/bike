@@ -1,18 +1,80 @@
-<h1> TOP page </h1>
-<p>this is initial page<%= @message %><p>
-<h2>Log in </h2>
-<%= form_for(:session, url: sessions_path) do |f| %>
-	<table class="table">
-		<tr>
-			<th><%= f.label :email %></th>
-			<td><%= f.text_field :email %></td>
-		</tr>
-		<tr>
-			<th><%= f.label :password %></th>
-			<td><%= f.password_field :password %></td>
-		</tr>
-	</table>
-	<%= f.submit %>
-<% end %>
+	<div class="box4">
+		<div class="top">
+			<%= image_tag "top.png"%>
+			<p class="catch">Takeda Labolatory 13th Members <br> Motor Bicycle Club</p>
+			</div>
+		</div>
 
-<h2><%= link_to "Create new Account", new_user_path %></h2>
+
+	<div class="box5 cf">
+		<div class="box5-1">
+			<a href ="#"><%= image_tag"bikea.JPG" %> 
+				<div class="bg"><p>Niigata Touring<p></div>
+			</a>
+		</div>
+		<div class="box5-2">
+			<a href="#"><%= image_tag"bikea.JPG" %> 
+			<div class="bg"><p>Toyama Touring </p></div>
+		</div></a>
+		<div class="box5-3">
+			<a href="#"><%= image_tag"bikea.JPG" %> 
+			<div class="bg"><p> Mt.Fuji Touring </p></div>
+		</div></a>
+	</div>
+
+
+	<div class="box5 cf">
+		<div class="box5-1">
+			<a href ="#"><%= image_tag"bikea.JPG" %> 
+				<div class="bg"><p>Niigata Touring<p></div>
+			</a>
+		</div>
+		<div class="box5-2">
+			<a href="#"><%= image_tag"bikea.JPG" %> 
+			<div class="bg"><p>Toyama Touring </p></div>
+		</div></a>
+		<div class="box5-3">
+			<a href="#"><%= image_tag"bikea.JPG" %> 
+			<div class="bg"><p> Mt.Fuji Touring </p></div>
+		</div></a>
+	</div>
+
+
+	<div class="box6 cf">
+		<div class="box6-1">
+			<div class="news">
+				<h2> NEWS </h2>
+			<ul>
+			<li><%= link_to "#" do %>
+			  <div class="text">To be or not to be that is the problem</div> 
+				<% end %></li>
+				<li><%= link_to "#" do %>
+					<div class="text">To be or not to be that is the problem</div> 
+					<% end %></li>
+					<li><%= link_to "#" do %>
+			  <div class="text">To be or not to be that is the problem</div> 
+				<% end %></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="box6-2">	
+		<div class="follow">
+			<p class="follow-info">最新情報はこちらでも配信しています</p>
+			<ul>
+				<li><a href="#" class="follow-tw">
+					<i class="fa fa-fw fa-twitter"></i>
+					Twitter
+				</a></li>
+				<li><a href="#" class="follow-fb">
+					<i class="fa fa-fw fa-facebook"></i>
+					Facebook
+				</a></li>
+				<li><a href="#" class="follow-gp">
+					<i class="fa fa-fw fa-google-plus"></i>
+					Google+
+				</a></li>
+			</ul>
+		</div>
+	</div>
+

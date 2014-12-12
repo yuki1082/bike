@@ -25,12 +25,10 @@ body{
 
 .header_wrapper{
 padding: 5px 15px;
-border: dotted;
 border-bottom: solid 1px #dddddd;
 margin-bottom: 15px;
 }
 .boxA	{padding-top: 20px;
-	border: solid;
 	padding-bottom: 10px}
 
 .header	{
@@ -52,7 +50,6 @@ div.box2{
 div.box3{
 	float: right;
 	width: 45%;
-	border: solid;
 }
 
 div.box4{
@@ -60,7 +57,11 @@ div.box4{
 }
 
 div.box5{
+	margin-bottom: 4%;
+}
 
+div.box6{
+	padding: 20px 15px;
 }
 
 /**Widin box1**/
@@ -97,21 +98,106 @@ div.box2-1 ul.nav_menu li a:hover	{
 	background-color: #eeeeee;
 }
 
-
-/** within box3 **/
-.signin_form, .signed_in {
-	margin-right: 0px;
-	width: auto;
+div.signin_wrapper{
+	box-sizing: border-box;
+	moz-box-sizing: border-box;
+	webkit-box-sizing: border-box;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 100%;
+	margin-right: auto;
+	margin-bottom: auto;
 }
 
-span{
-	padding-right:2px;
+div.signin_wrapper h2{
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+	border-bottom: solid 1px #888;
+	border-left: solid 10px;
+	padding: 5px;
 }
 
-input[type="text"], input[type="password"]{
-	width: 25%;
-	margin: 0;
-	padding: 0;
+/** signup form **/
+div.signup{
+	box-sizing: border-box;
+	moz-box-sizing: border-box;
+	webkit-box-sizing: border-box;
+	margin-right: 5%;
+	width: 65%;
+	height: auto;
+	padding: 10px;
+	border: solid;
+	margin-bottom: 20px;
+	background-color: #dfe3e8;
+	float: left;
+}
+
+div.signup a.signup_button{
+	text-align: center;
+	display: block;
+	width: 50%;
+	margin: 20px auto;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 28px;
+	border: solid 1px #225588;
+	padding: 10px 20px;
+	color: #fff;
+	background: #337fcc;
+	border-radius: 4px;
+	text-shadow: 2px 2px 3px #225588;
+	box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3),
+	            0px 1px 0px rgba(255, 255,255, 0.5) inset,
+	             0px -1px 0px rgba(255,255,255,0.2) inset;;
+}
+
+div.signup a.signup_button:hover{	
+  background:-moz-linear-gradient(rgba(34,85,136,0.4), rgba(34,85,136,0.9));
+  background:-webkit-gradient(linear, 100% 0%, 100% 100%, from(rgba(34,85,136,0.4)), to(rgba(119,170,221,0.9)));
+}
+
+
+/** login form **/
+div.signin {
+	box-sizing: border-box;
+	moz-box-sizing: border-box;
+	webkit-box-sizing: border-box;
+	width: 30%;
+	height: auto;
+	margin-bottom: 20px;
+	background-color: #dfe3e8;
+	float: left;
+}
+
+div.signin form{
+	padding: 20px;
+}
+
+div.signin form p {
+	margin: 0 0 20px 0;
+}
+
+div.signin form label{
+	display: block;
+	margin: 0 5px 0 0 ;
+	font-size: 14px;
+}
+
+div.signin input[type="text"], div.signin input[type="password"]{	
+	box-sizing: border-box;
+	moz-box-sizing: border-box;
+	webkit-box-sizing: border-box;
+	width: 100%;
+	border-radius: 1px;
+	padding: 2px 5px;
+}
+
+div.signin input[type="text"]:focus,
+div.signin input[type="password"]:focus{
+	border: solid 1px #0cf;
+	outline: none;
+	box-shadow: 0 0 5px 0 #0cf;
+	-webkit-box-shadow: 0 0 5px 0 #0cf;
 }
 
 /** within box4**/
@@ -176,6 +262,51 @@ div.box4 div.top img{
 .box5 a:hover{
 	opacity: 0.7;
 }
+
+.box6-1{
+	float: left;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 70%;
+	padding-right: 35px;
+}
+
+.box6-1 .news{
+	padding: 20px;
+	border: solid 5px #dddddd;
+}
+
+.box6-1 .news h2{
+	margin-bottom: 20px
+}
+
+.box6-1 .news ul{
+	list-style: none;
+}
+
+.box6-1 .news ul li a{
+	display: block;
+	text-decoration: none;
+	padding: 5px;
+	border-bottom: dotted 2px #dddddd;
+	color: #000000;
+}
+
+.box6-1 .news ul li a:hover{
+	background-color: #eeeeee
+}
+
+.box6-2{
+	float: left;
+	width: 30%;
+}
+
+.box7	{
+	width: 100%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	background-color: #dddddd}
 /* clear fix **/
 .cf{
 	zoom:1;
@@ -187,8 +318,10 @@ div.box4 div.top img{
 	clear:both;
 }
 
+
+
 @media screen and (min-width:1024px){
-	.header, #content{
+	.header, #content, #signin_wrapper{
 		width: 1024px;
 		margin-left: auto;
 		margin-right: auto;

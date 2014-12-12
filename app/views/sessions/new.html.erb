@@ -1,0 +1,21 @@
+<div class ="signin_wrapper cf">
+	<h2> Sign in </h2>
+
+	<div class="signup">
+		<p> if you have not signed up, please sign up right now! </p>
+		<%= link_to "Sign Up!", new_user_path, class: "signup_button" %>
+	</div>
+
+
+	<div class="signin">		
+		<%= form_for(:session, url: sessions_path, html:{class: 'signin'}) do |f|%>
+		<p><%= f.label :email %> <%= f.text_field :email%></p>
+		<p><%= f.label :password %><%= f.password_field :password %></p>
+		<p><%= f.submit("Sign in") %></p>		
+		<% end %>
+	</div> <!-- div.signin_form -->
+
+
+</div>
+
+

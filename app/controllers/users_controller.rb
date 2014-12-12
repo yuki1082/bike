@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_filter :signed_in_user?, only:[:show, :edit, :update]
-
+	before_filter :correct_user?, only:[:show, :edit, :update, :destroy]
 	def index
 		@users = User.order("created_at")
 	end
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 	end 
 
 	def show
-		@user = User.find(params[:id])
+		
 	end 
 
 	def update
@@ -30,7 +30,13 @@ class UsersController < ApplicationController
 	def edit
 	end 
 
-	def destroy
-		
+	def destroy		
 	end 
+
+	private 
+	def correct_user?
+		@user = User.find(params[:id])
+		redirect_to (root_path) unless current_user?(@user)
+	end 
+
 end

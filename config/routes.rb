@@ -1,6 +1,9 @@
 Bike::Application.routes.draw do
   root to: "top#index"
-  resources :users
+  resources :users do 
+    resources :articles, only:[:index]
+  end 
+  resources :articles
   resources :sessions, only:[:new, :create, :destroy]
   # The priority is based upon order of creation:
   # first created -> highest priority.

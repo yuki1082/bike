@@ -20,69 +20,41 @@
 	<div class="box2" >
 	   <div class="box2-1 cf"> 
 	  		<ul class="nav_menu">
-	  			<li><%=link_to "HOME", "#"%></li>
-	  			<li><%=link_to "Bike", "#"%></li>
-	  			<li><%=link_to "Drink", "#"%></li>
-	  			<li><%=link_to "Photo", "#"%></li>			  
+	  			<% unless signed_in? %>
+	  			<li><%=link_to "HOME", root_path%></li>
+	  			<li><%=link_to "About", "#"%></li>
+	  			<li><%=link_to "Login", new_session_path%></li>
+	  			<li><%= link_to "SingUp", new_user_path%></li>
+	  			<li><%= link_to "article", articles_path%></li>
+	  			<% else %>
+	  			<li><%= link_to "HOME", root_path %></li>
+	  			<li><%= link_to "article", user_articles_path(current_user) %></li>
+	  			<li><%= link_to "My Photo Gallery", "#" %></li>
+	  			<li><%= link_to  current_user.name + "'s \sprofile", user_path(current_user)%></li>
+	  			<li><%= link_to "Logout", session_path(current_user), method: 
+	  			:delete, confirm: "Are you sure?"%></li>
+	  			<% end %>
 	  		</ul>
 	  	</div>
 	</div> <!-- box2 -->
-
-	<div class="box3">	
-		<div class="box3-1">
-		  <% unless signed_in? %>		 
-		  <div class="signin_form">		
-		  	<%= form_for(:session, url: sessions_path, html:{class: 'signin'}) do |f|%>
-		  	<span><%= f.label :email %>:   <%= f.text_field :email%></span>
-		  	<span><%= f.label :password %>:<%= f.password_field :password %></span>
-		  	<span><%= f.submit("Sign in") %></span>
-		  	<span></span>
-		  	<% end %>
-		  </div> <!-- div.signin_form -->
-		  <% else %>	  	
-		  <ul class="signed_in">
-		  	Welcom <%= current_user.name %> |
-		  		<%= link_to "sign_out", session_path(current_user), method: :delete, confirm: "Are you sure?" %> 
-		  		hoge
-		  </ul> <!-- div.signed_in -->
-		  <% end %>
-		</div>
-	</div>
-
 	</div> <!-- header -->
 </div> <!-- header_wrapper -->
 
 
 <div id="content">
-	<div class="box4">
-		<div class="top">
-			<%= image_tag "top.png"%>
-			<p class="catch">Takeda Labolatory 13th Members <br> Motor Bicycle Club</p>
-			</div>
-		</div>
-
-
-	<div class="box5 cf">
-		<div class="box5-1">
-			<a href ="#"><%= image_tag"bikea.JPG" %> 
-				<div class="bg"><p>Niigata Touring<p></div>
-			</a>
-		</div>
-		<div class="box5-2">
-			<a href="#"><%= image_tag"bikea.JPG" %> </a>
-			<div class="bg"><p>Toyama Touring </p></div>
-		</div>
-		<div class="box5-3">
-			<a href="#"><%= image_tag"bikea.JPG" %> </a>
-			<div class="bg"><p> Mt.Fuji Touring </p></div>
-		</div>
-	</div>
-
 		<% flash.each do |key, value| %>
 		<div class="alert"><%= key %><%= value %> </div>
 		<% end %>	
-<!--		<%= yield %> -->
-
+		<%= yield %> 
 </div>
+
+<div class="box7">
+<div class="box7-inner">
+	<div class="copyright">
+	<p>Copyright &copy; TimeSwitch</p>
+	</div>
+</div>
+</div>
+
 </body>
 </html>

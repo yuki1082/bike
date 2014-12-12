@@ -1,0 +1,18 @@
+<h1>Make an new article </h1>
+<%= form_for @a do |f| %>
+	<table>
+		<tr>
+			<th><%= f.label :title %> </th>
+			<td><%= f.text_field :title %></td>
+		</tr>
+		<tr>
+			<th><%= f.label :body %> </th>
+			<td><%= f.text_area :body, rows:10, cols:45 %></td>
+		</tr>
+		<tr>
+			<th><%= f.label :status %></th>
+			<td><%= f.select :status, ["draft", "public"]%> </td>
+		</tr>
+	</table>
+<% end %>
+
