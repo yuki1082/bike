@@ -25,11 +25,11 @@
 	  			<li><%=link_to "About", "#"%></li>
 	  			<li><%=link_to "Login", new_session_path%></li>
 	  			<li><%= link_to "SingUp", new_user_path%></li>
-	  			<li><%= link_to "article", articles_path%></li>
+	  			<li><%= link_to "Articles", articles_path%></li>
 	  			<% else %>
 	  			<li><%= link_to "HOME", root_path %></li>
-	  			<li><%= link_to "article", user_articles_path(current_user) %></li>
-	  			<li><%= link_to "My Photo Gallery", "#" %></li>
+	  			<li><%= link_to "My Articles", user_articles_path(current_user) %></li>
+	  			<li><%= link_to "Articles", articles_path %></li>
 	  			<li><%= link_to  current_user.name + "'s \sprofile", user_path(current_user)%></li>
 	  			<li><%= link_to "Logout", session_path(current_user), method: 
 	  			:delete, confirm: "Are you sure?"%></li>

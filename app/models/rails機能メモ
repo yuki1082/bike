@@ -1,0 +1,88 @@
+#アクションとURLの関係(memberモデルをれいとして)
+ -index: members_path /members
+ -show: member_path(@member)  /members/123
+ -new : new_member_path  /members/new
+ -edit :edit_member_path /members/123/edit
+ -create :members_path /members
+ -update :member_path(@member) /members/123/
+ -destroy: member_path(@member) /members/123
+
+
+#ログイン機能
+
+1. セキュアなパスワードの作成(has_secure_password(Railsの機能)使用)
+ - install bcrypt-ruby
+
+ - add "password_digest" column to User model(password_digestとしないとrailsに認識されないと思われる)
+   -> rails g migration add_password_digest_to_users password_digest:string
+
+ - password_confirmation属性の追加 (has_secure_passwordで勝手に実装される) 
+   -> レコードをデータベースに保存する前に　passwordと一致するか確認する
+
+
+2. ユーザ登録
+ -ユーザ登録フォーム作成
+   -> new.html.erbで)
+      form_for(@user).... 
+      new.html.erbでpassword_confirmationを入力する箇所があるが、passwordと一致しているかは、
+      has_secure_passwordが行ってくれている
+   -> def new {@user = User.new} ユーザー登録するので、ユーザモデルのインスタンス作成。
+      これで、nameやemailをブラウザから受け入れる
+   -> def create{ @user = User.create(params[:user])}
+      flashメッセージはRuby on Rails Tutorial 3.2を参照
+
+ 3. ユーザ認証(ログインしてセッションの永続化を行う)
+  -sessionsコントローラを作成(ログインしているかの監視はsessionコントローラの役割
+   -> sessionはユーザに表示したり、ユーザが編集したりしないので、resourceには下記のようにする
+       resources :sessions, only:[:new, :create, :destroy]
+
+  -sign in form作成
+   ->form_for(:session, url: sessions_path)  sessions_pathに対応するのはcreateアクション
+ 
+  - createと認証の実装(- sessions_helperの作成 )
+    -> def create 
+        user = User.find_by_email(params[:session][:email].downcase)
+        if user && User.authenticate(params[:session][:password])
+         sign_in(user) <-Session_helper.rbの中にかかれている
+        end
+       end
+
+      
+
+    -> 何もしないと状態は保存されないので、ユーザのサインイン状態を保持するには特殊なSession関数をつかって、
+       ユーザIDに等しい"記憶トークンを保持"    
+       -session[:remember_token] = user.idのように(ただし、セキュリティ上user.idはいけない。
+        暗号化した何かをハッシュのvalueにする必要がある)
+        故に下記のようにする
+         - Userモデルにremberm_token属性を作成
+           ->データベースとやりとりするのはモデルクラス。なのでremember_tokenもデータベースに登録sれるためには
+             Userモデルでかかれるべき
+             
+         -before_save :create_remenber_token <- sessions_helperで(ユーザのセッション(ログイン)が作られる前にトークンを作る)
+           def create_remeber_token
+             self.remember_token = SecureRandom.urlsafe_base64
+           end 
+
+    -> sing_in(user)の実装(session_helper.rb)
+       - cookiesを使用して、ページを異同しても、rember_tokenを保存。保存したremember_tokenを利用して利用して
+         データベースないのユーザを発見
+         def sing_in(user)
+          cookies.permanent[:remember_token] = user.remember_token <- create_remember_tokenで作ったランダムな値
+          self.current_user = user <- アクセサメソッドを使用(なぜか定義せずじか書き rails tutorialsみよ)
+         end 
+
+    ->  アクセサメソッドcurrent_user関連の実装
+       - def cuurrent_user=(user)
+           @current_user = user
+         end 
+    
+       - def current_user
+          @current_user ||= User.find_by_remember_token(cookies[:remember_token])
+         end 
+
+    -> signed_in?の実装(sessions_helper内に実装.viewでログインしているか確認するために呼び出す)
+        def signed_in?
+         !current_user.nil?
+        end 
+
+4. コントローラへのアクセス制限
